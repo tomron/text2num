@@ -58,11 +58,11 @@ def text2num(s):
         if x is not None:
             g += x
         elif w == "hundred":
-            g *= 100
+            g = max (g * 100, 100)
         else:
             x = Magnitude.get(w, None)
             if x is not None:
-                n += g * x
+                n += max(x, g * x)
                 g = 0
             else:
                 raise NumberException("Unknown number: "+w)
